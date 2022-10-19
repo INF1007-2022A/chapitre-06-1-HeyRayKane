@@ -53,9 +53,10 @@ def frequence(sentence: str) -> dict:
     # TODO: Afficher les lettres les plus fréquentes
     new_sentence=""
     for j in sentence:
-        if j.isalnum():
+        if j.isalnum() or j==" ":
             new_sentence+=j
     a=sorted(new_sentence)
+    print(a)
     caracteres_frequents = dict()
     lettres_frequentes = dict()
     lettres_organisees= dict()
@@ -66,6 +67,7 @@ def frequence(sentence: str) -> dict:
         else:
             lettres_frequentes[a[i-1]]=b
             b=1
+    lettres_frequentes[a[i-1]]=b
     for k in lettres_frequentes:
         if lettres_frequentes[k]>5:
             lettres_organisees[lettres_frequentes[k]] = k
