@@ -5,22 +5,38 @@
 def order(values: list = None) -> list:
     if values is None:
         # TODO: demander les valeurs ici
-        pass
-
-    return []
+        values=[]
+        for i in range(10):
+            a = input("Entrez entier, un nombre décimal ou une chaîne de caractères:")
+            values.append(a)
+    #print(values)
+    num_values=[]
+    str_values=[]
+    for j in values:
+        if j.isdigit():
+            num_values.append(float(j))
+        elif not j.isdigit():
+            str_values.append(j)
+    """
+    num_values = [float(value) for value in values if value.isdigit()]
+    str_values = [value for value in values if not value.isdigit()]"""
+    return sorted(num_values)+sorted(str_values)
 
 
 def anagrams(words: list = None) -> bool:
     if words is None:
         # TODO: demander les mots ici
-        pass
-
-    return False
-
+        words=[input("Écrivez le premier mot:"),input("Écrivez le deuxième mot:")]
+    return sorted(words[0])==sorted(words[1])
 
 def contains_doubles(items: list) -> bool:
-    return False
-
+    items=sorted(items)
+    no_double =[]
+    for i in range(1,len(items)):
+        if items[i-1]!=items[i]:
+            no_double.append(items[i-1])
+    no_double.append(items[i])
+    return not(no_double == items)
 
 def best_grades(student_grades: dict) -> dict:
     # TODO: Retourner un dictionnaire contenant le nom de l'étudiant ayant la meilleure moyenne ainsi que sa moyenne
@@ -46,14 +62,14 @@ def print_recipe(ingredients) -> None:
 
 def main() -> None:
     print(f"On essaie d'ordonner les valeurs...")
-    order()
+    #print(order())
 
     print(f"On vérifie les anagrammes...")
-    anagrams()
+    print(anagrams())
 
     my_list = [3, 3, 5, 6, 1, 1]
     print(f"Ma liste contient-elle des doublons? {contains_doubles(my_list)}")
-
+    """
     grades = {"Bob": [90, 65, 20], "Alice": [85, 75, 83]}
     best_student = best_grades(grades)
     print(f"{list(best_student.keys())[0]} a la meilleure moyenne: {list(best_student.values())[0]}")
@@ -65,7 +81,7 @@ def main() -> None:
     recipes = get_recipes()
 
     print("On affiche une recette au choix...")
-    print_recipe(recipes)
+    print_recipe(recipes)"""
 
 
 if __name__ == '__main__':
